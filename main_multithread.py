@@ -26,13 +26,13 @@ def main():
 
 def search_hash(hashed_string, words, threads_count, value):
     count_words = len(words)/threads_count
-
-    for word in words[value:value+count_words]:
+    i = value*count_words
+    for word in words[i:i+count_words]:
         calculated_hash = hashlib.sha256(word.strip().encode('utf-8')).hexdigest()
         if calculated_hash == hashed_string:
             return word
-        
+
     return None
-        
+
 if __name__ == '__main__':
     main()
